@@ -1,3 +1,20 @@
 ﻿.page-header {
     margin-top: 0;
 }
+
+
+/* Typeahead */
+.full-width-input .twitter-typeahead {
+    width: 100%;
+}
+
+.twitter-typeahead .tt-menu {
+    width: 100%;
+    background-color: #9933cc;
+    color: #ffffff;
+}
+
+.twitter-typeahead .tt-selectable {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

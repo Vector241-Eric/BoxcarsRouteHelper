@@ -68,6 +68,7 @@
     <Content Include="css\boxcars.css" />
     <Content Include="Index.html" />
     <Content Include="js\boxcars.js" />
+    <Content Include="js\typeahead.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
