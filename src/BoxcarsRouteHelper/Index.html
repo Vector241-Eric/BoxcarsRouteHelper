@@ -13,16 +13,16 @@
 </head>
 <body>
 <!-- Routes -->
-<div id="routes-container" tabindex="-1">
-    <div class="container-fluid">
+<div id="routes-container" class="container" tabindex="-1">
+    <div>
         <div class="page-header">
-            <div class="row-fluid">
+            <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <h2 class="text-primary" style="text-align: center">Routes</h2>
                 </div>
             </div>
         </div>
-        <div class="row-fluid">
+        <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full-width-input">
                 <div class="form-group">
                     <h5>Origin</h5>
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="row-fluid switch-view">
+        <div class="row switch-view">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <a href="javascript:void(0)" id="btn-destinations" class="btn btn-success btn-block">Switch</a>
             </div>
@@ -47,64 +47,62 @@
 </div>
 
 <!-- Destinations -->
-<div id="destinations-container" tabindex="-1" style="display: none">
-    <div class="container-fluid">
-        <div class="page-header">
-            <div class="row-fluid">
-                <div class="col-lg-12 col-md-7 col-sm-6">
-                    <h2 class="text-success" style="text-align: center">Destinations</h2>
-                </div>
+<div id="destinations-container" class="container" tabindex="-1" style="display: none">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-7 col-sm-6">
+                <h2 class="text-success" style="text-align: center">Destinations</h2>
             </div>
         </div>
-        <!-- Region -->
-        <div class="row-fluid">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h5>Region</h5>
+    </div>
+    <!-- Region -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Region</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8 full-width-input">
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-default grouped-button" data-group="region">Odd</a>
+                <a class="btn btn-default grouped-button" data-group="region">Even</a>
             </div>
         </div>
-        <div class="row-fluid">
-            <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8 full-width-input">
-                <div class="btn-group btn-group-justified">
-                    <a class="btn btn-default grouped-button" data-group="region">Odd</a>
-                    <a class="btn btn-default grouped-button" data-group="region">Even</a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                <div class="form-group">
-                    <input class="form-control" id="region-input" type="number" min="2" max="12">
-                </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+            <div class="form-group">
+                <input class="form-control" id="destinationregion-input" type="number" min="2" max="12" pattern="\d*">
             </div>
         </div>
-        <!-- City -->
-        <div class="row-fluid">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h5>City</h5>
+    </div>
+    <!-- City -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>City</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8 full-width-input">
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-default grouped-button" data-group="city">Odd</a>
+                <a class="btn btn-default grouped-button" data-group="city">Even</a>
             </div>
         </div>
-        <div class="row-fluid">
-            <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8 full-width-input">
-                <div class="btn-group btn-group-justified">
-                    <a class="btn btn-default grouped-button" data-group="city">Odd</a>
-                    <a class="btn btn-default grouped-button" data-group="city">Even</a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                <div class="form-group">
-                    <input class="form-control" id="city-input" type="number" min="2" max="12">
-                </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+            <div class="form-group">
+                <input class="form-control" id="destinationcity-input" type="number" min="2" max="12" pattern="\d*">
             </div>
         </div>
-        <div class="row-fluid">
-            <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8 full-width-input">
-                <h5>Destination</h5>
-                <output class="text-primary" for="origin-input destination-input" id="destination-output">Example City</output>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8 full-width-input">
+            <h5>Destination</h5>
+            <output class="text-primary" for="origin-input destination-input" id="destination-output">Example City</output>
         </div>
+    </div>
 
-        <div class="row-fluid switch-view">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <a href="javascript:void(0)" id="btn-routes" class="btn btn-primary btn-block">Switch</a>
-            </div>
+    <div class="row switch-view">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <a href="javascript:void(0)" id="btn-routes" class="btn btn-primary btn-block">Switch</a>
         </div>
     </div>
 </div>
