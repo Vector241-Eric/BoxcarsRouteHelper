@@ -1,4 +1,8 @@
-﻿.page-header { margin-top: 0; }
+﻿.container {
+    width: 100%;
+}
+
+.page-header { margin-top: 0; }
 
 .switch-view {
     border-top-style: solid;
