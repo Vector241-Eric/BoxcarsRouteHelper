@@ -1,17 +1,28 @@
 ﻿var Boxcars = Boxcars || {};
 
 (function() {
-    Boxcars.PageSwitchers = (function() {
-        var attachHandlers = function() {
-            $("#btn-routes").click(function() {
-                $("#destinations-container").hide();
-                $("#routes-container").show();
-            });
-            $("#btn-destinations").click(function() {
-                $("#routes-container").hide();
-                $("#destinations-container").show();
-            });
+    Boxcars.PageSwitchers = (function () {
+        var routesId = "#routes-container";
+        var destinationsId = "#destinations-container";
+
+        var showRoutes = function () {
+            document.getElementById("origin-input").value = "";
+            document.getElementById("destination-input").value = "";
+
+            $(destinationsId).hide();
+            $(routesId).show();
+        }
+
+        var showDestinations = function() {
+            $(routesId).hide();
+            $(destinationsId).show();
         };
+
+        var attachHandlers = function () {
+            $("#btn-routes").click(showRoutes);
+            $("#btn-destinations").click(showDestinations);
+        };
+
         return {
             attachHandlers: attachHandlers
         };
