@@ -1,24 +1,23 @@
 ﻿var Boxcars = Boxcars || {};
 
 (function() {
-    Boxcars.PageSwitchers = (function () {
+    Boxcars.PageSwitchers = (function() {
         var routesId = "#routes-container";
         var destinationsId = "#destinations-container";
 
-        var showRoutes = function () {
+        var showRoutes = function() {
             document.getElementById("origin-input").value = "";
             document.getElementById("destination-input").value = "";
 
             $(destinationsId).hide();
             $(routesId).show();
-        }
-
+        };
         var showDestinations = function() {
             $(routesId).hide();
             $(destinationsId).show();
         };
 
-        var attachHandlers = function () {
+        var attachHandlers = function() {
             $("#btn-routes").click(showRoutes);
             $("#btn-destinations").click(showDestinations);
         };
@@ -66,9 +65,28 @@
             attachHandlers: attachHandlers
         };
     })();
+
+    Boxcars.ButtonGroups = (function() {
+        var clickHandler = function () {
+            var el = $(this);
+            var group = el.data("group");
+            var selector = '[data-group="' + group + '"]';
+            $(selector).addClass("btn-default").removeClass("btn-success");
+            el.addClass("btn-success").removeClass("btn-default");
+        };
+
+        var attachHandlers = function() {
+            $('.grouped-button').click(clickHandler);
+        };
+
+        return {
+            attachHandlers: attachHandlers
+        };
+    })();
 })();
 
 $(function() {
     Boxcars.PageSwitchers.attachHandlers();
     Boxcars.CityAutoComplete.attachHandlers();
+    Boxcars.ButtonGroups.attachHandlers();
 });

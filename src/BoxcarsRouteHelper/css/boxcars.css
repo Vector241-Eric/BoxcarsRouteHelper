@@ -1,28 +1,29 @@
-﻿.page-header {
-    margin-top: 0;
-}
+﻿.page-header { margin-top: 0; }
 
+.switch-view {
+    border-top-style: solid;
+    border-top-width: 1px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 15px;
+    padding-top: 10px;
+}
 
 /* Typeahead */
-.full-width-input .twitter-typeahead {
-    width: 100%;
-}
+
+.full-width-input .twitter-typeahead { width: 100%; }
 
 .twitter-typeahead .tt-menu {
-    width: 100%;
     background-color: #555555;
     color: #ffffff;
+    width: 100%;
 }
 
-.twitter-typeahead .tt-menu .tt-cursor {
-    background-color: #9933cc; 
-}
+.twitter-typeahead .tt-menu .tt-cursor { background-color: #9933cc; }
 
 .twitter-typeahead .tt-selectable {
-    padding-top: 10px;
     padding-bottom: 10px;
+    padding-top: 10px;
 }
 
-.tt-highlight {
-    font-weight: bold;
-}
+.tt-highlight { font-weight: bold; }

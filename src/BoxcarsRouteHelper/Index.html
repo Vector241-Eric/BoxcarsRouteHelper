@@ -12,17 +12,18 @@
     <link href="./css/boxcars.css" rel="stylesheet">
 </head>
 <body>
+<!-- Routes -->
 <div id="routes-container" tabindex="-1">
     <div class="container">
         <div class="page-header">
             <div class="row">
-                <div class="col-lg-12 col-md-7 col-sm-6">
-                    <h2 style="text-align: center">Routes</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="text-primary" style="text-align: center">Routes</h2>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-7 col-sm-6 full-width-input">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full-width-input">
                 <div class="form-group">
                     <h5>Origin</h5>
                     <input class="form-control typeahead tt-query city-complete" autocomplete="off" spellcheck="false" id="origin-input" type="text" placeholder="Enter city...">
@@ -32,30 +33,77 @@
                     <input class="form-control typeahead tt-query city-complete" autocomplete="off" spellcheck="false" id="destination-input" type="text" placeholder="Enter city...">
                 </div>
                 <div class="form-group">
-                    <h5>Value</h5>
+                    <h5>Route Value</h5>
                     <output class="text-primary" for="origin-input destination-input" id="destination-output">$<span id="route-value">0</span></output>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-7 col-sm-6">
-                <a href="javascript:void(0)" id="btn-destinations" class="btn btn-default btn-lg btn-block">Switch To Destinations</a>
+        <div class="row switch-view">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <a href="javascript:void(0)" id="btn-destinations" class="btn btn-success btn-block">Switch</a>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Destinations -->
 <div id="destinations-container" tabindex="-1" style="display: none">
     <div class="container">
         <div class="page-header">
             <div class="row">
                 <div class="col-lg-12 col-md-7 col-sm-6">
-                    <h2 style="text-align: center">Destinations</h2>
+                    <h2 class="text-success" style="text-align: center">Destinations</h2>
+                </div>
+            </div>
+        </div>
+        <!-- Region -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h5>Region</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8 full-width-input">
+                <div class="btn-group btn-group-justified">
+                    <a class="btn btn-default grouped-button" data-group="region">Odd</a>
+                    <a class="btn btn-default grouped-button" data-group="region">Even</a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group">
+                    <input class="form-control" id="region-input" type="number" min="2" max="12">
+                </div>
+            </div>
+        </div>
+        <!-- City -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h5>City</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8 full-width-input">
+                <div class="btn-group btn-group-justified">
+                    <a class="btn btn-default grouped-button" data-group="city">Odd</a>
+                    <a class="btn btn-default grouped-button" data-group="city">Even</a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                <div class="form-group">
+                    <input class="form-control" id="city-input" type="number" min="2" max="12">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-7 col-sm-6">
-                <a href="javascript:void(0)" id="btn-routes" class="btn btn-default btn-lg btn-block">Switch To Routes</a>
+            <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8 full-width-input">
+                <h5>Destination</h5>
+                <output class="text-primary" for="origin-input destination-input" id="destination-output">Example City</output>
+            </div>
+        </div>
+
+        <div class="row switch-view">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <a href="javascript:void(0)" id="btn-routes" class="btn btn-primary btn-block">Switch</a>
             </div>
         </div>
     </div>
