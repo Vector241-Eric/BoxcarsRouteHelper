@@ -42,11 +42,12 @@
             $("input.city-complete").typeahead({
                 hint: true,
                 highlight: true,
-                minLength: 1
+                minLength: 1,
             },
             {
                 name: "states",
-                source: bloodhound
+                source: bloodhound,
+                limit: 3
             });
         };
 

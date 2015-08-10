@@ -10,11 +10,19 @@
 
 .twitter-typeahead .tt-menu {
     width: 100%;
-    background-color: #9933cc;
+    background-color: #555555;
     color: #ffffff;
 }
 
+.twitter-typeahead .tt-menu .tt-cursor {
+    background-color: #9933cc; 
+}
+
 .twitter-typeahead .tt-selectable {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tt-highlight {
+    font-weight: bold;
 }
