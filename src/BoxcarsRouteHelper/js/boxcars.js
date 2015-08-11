@@ -42,16 +42,24 @@
     })();
 
     Boxcars.Util = (function() {
-        var getInputValue = function (id) {
+        var getInputValue = function(id) {
             return document.getElementById(id).value;
         };
 
+        var handleTypeaheadChange = function(id, handler) {
+            $("#" + id)
+                .on("change", handler)
+                .bind("typeahead:select", handler)
+                .bind("typeahead:change", handler);
+        };
+
         return {
-            getInputValue: getInputValue
-        }
+            getInputValue: getInputValue,
+            handleTypeaheadChange: handleTypeaheadChange
+        };
     })();
 
-    Boxcars.CityAutoComplete = (function () {
+    Boxcars.CityAutoComplete = (function() {
         var states = [
             "Alabama", "Alaska", "Arizona", "Arkansas", "California",
             "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
@@ -72,7 +80,7 @@
             local: states
         });
 
-        var attachHandlers = function () {
+        var attachHandlers = function() {
             $("input.city-complete").typeahead({
                 hint: true,
                 highlight: true,
@@ -90,10 +98,9 @@
         };
     })();
 
-    Boxcars.Destinations = (function () {
+    Boxcars.Destinations = (function() {
 
         var originId = "input-destinations-origin";
-
         var buttonGroups = (function() {
 
             var selectedClass = "btn-success";
@@ -162,9 +169,13 @@
             document.getElementById("destination-output").innerHTML = val;
         };
 
+        var setRouteValue = function(val) {
+            document.getElementById("output-destination-routeValue").innerHTML = val;
+        };
         var clear = function() {
             buttonGroups.clear();
             setDestinationValue("&nbsp;");
+            setRouteValue("&nbsp;");
             document.getElementById(regionRollId).value = "";
             document.getElementById(cityRollId).value = "";
             $("#" + originId).typeahead("val", "");
@@ -180,15 +191,21 @@
             var regionRoll = Boxcars.Util.getInputValue(regionRollId);
             var cityRoll = Boxcars.Util.getInputValue(cityRollId);
 
-            var hasAllInput = buttons.allValid
+            var hasAllDestinationInput = buttons.allValid
                 && regionRoll !== ""
                 && cityRoll !== "";
 
-            if (!hasAllInput)
+            if (!hasAllDestinationInput)
                 return 0;
 
             var destination = getDestinationKey(buttons.region, regionRoll, buttons.city, cityRoll);
             setDestinationValue(destination);
+
+            var origin = Boxcars.Util.getInputValue(originId);
+            if (origin !== "") {
+                var routeValue = Boxcars.Routes.getRouteValue(origin, destination);
+                setRouteValue(routeValue);
+            }
             return 1;
         };
 
@@ -197,6 +214,7 @@
             buttonGroups.onChange(onValueChanged);
             $("#" + regionRollId).on("change", onValueChanged);
             $("#" + cityRollId).on("change", onValueChanged);
+            Boxcars.Util.handleTypeaheadChange(originId, onValueChanged);
         };
 
         return {
@@ -214,16 +232,15 @@
             document.getElementById("route-output").innerHTML = text;
         };
 
-        var clear = function () {
+        var clear = function() {
             $("#" + originId).typeahead("val", "");
             $("#" + destinationId).typeahead("val", "");
             setOutput("&nbsp;");
         };
 
-        var getRouteKey = function(origin, destination) {
+        var getRouteValue = function(origin, destination) {
             return origin + "-" + destination;
-        }
-
+        };
         var onChange = function() {
             var origin = Boxcars.Util.getInputValue(originId);
             var destination = Boxcars.Util.getInputValue(destinationId);
@@ -234,26 +251,20 @@
             if (!hasAllInput)
                 return 0;
 
-            var key = getRouteKey(origin, destination);
+            var key = getRouteValue(origin, destination);
             setOutput(key);
 
             return 1;
-        }
-
+        };
         var attachHandlers = function() {
-            $("#" + originId)
-                .on("change", onChange)
-                .bind('typeahead:select', onChange)
-                .bind('typeahead:change', onChange);
-            $("#" + destinationId)
-                .on("change", onChange)
-                .bind('typeahead:select', onChange)
-                .bind('typeahead:change', onChange);
+            Boxcars.Util.handleTypeaheadChange(originId, onChange);
+            Boxcars.Util.handleTypeaheadChange(destinationId, onChange);
         };
 
         return {
             attachHandlers: attachHandlers,
-            clear: clear
+            clear: clear,
+            getRouteValue: getRouteValue
         };
     })();
 })();
