@@ -51,8 +51,48 @@
         }
     })();
 
+    Boxcars.CityAutoComplete = (function () {
+        var states = [
+            "Alabama", "Alaska", "Arizona", "Arkansas", "California",
+            "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
+            "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
+            "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
+            "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
+            "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",
+            "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island",
+            "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
+            "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+        ];
 
-    Boxcars.Destinations = (function() {
+        // constructs the suggestion engine
+        var bloodhound = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // `states` is an array of state names defined in "The Basics"
+            local: states
+        });
+
+        var attachHandlers = function () {
+            $("input.city-complete").typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            },
+            {
+                name: "states",
+                source: bloodhound,
+                limit: 3
+            });
+        };
+
+        return {
+            attachHandlers: attachHandlers
+        };
+    })();
+
+    Boxcars.Destinations = (function () {
+
+        var originId = "input-destinations-origin";
 
         var buttonGroups = (function() {
 
@@ -127,6 +167,7 @@
             setDestinationValue("&nbsp;");
             document.getElementById(regionRollId).value = "";
             document.getElementById(cityRollId).value = "";
+            $("#" + originId).typeahead("val", "");
         };
 
         var getDestinationKey = function(regionOddEven, regionNumber, cityOddEven, cityNumber) {
@@ -168,52 +209,14 @@
         var originId = "origin-input";
         var destinationId = "destination-input";
 
-        var cityAutoComplete = (function() {
-            var states = [
-                "Alabama", "Alaska", "Arizona", "Arkansas", "California",
-                "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
-                "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
-                "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
-                "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
-                "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",
-                "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island",
-                "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
-                "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
-            ];
-
-            // constructs the suggestion engine
-            var bloodhound = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                // `states` is an array of state names defined in "The Basics"
-                local: states
-            });
-
-            var attachHandlers = function() {
-                $("input.city-complete").typeahead({
-                    hint: true,
-                    highlight: true,
-                    minLength: 1
-                },
-                {
-                    name: "states",
-                    source: bloodhound,
-                    limit: 3
-                });
-            };
-
-            return {
-                attachHandlers: attachHandlers
-            };
-        })();
 
         var setOutput = function(text) {
             document.getElementById("route-output").innerHTML = text;
         };
 
-        var clear = function() {
-            document.getElementById(originId).value = "";
-            document.getElementById(destinationId).value = "";
+        var clear = function () {
+            $("#" + originId).typeahead("val", "");
+            $("#" + destinationId).typeahead("val", "");
             setOutput("&nbsp;");
         };
 
@@ -238,7 +241,6 @@
         }
 
         var attachHandlers = function() {
-            cityAutoComplete.attachHandlers();
             $("#" + originId)
                 .on("change", onChange)
                 .bind('typeahead:select', onChange)
@@ -257,7 +259,8 @@
 })();
 
 $(function() {
-    //Page Switchers
+    Boxcars.CityAutoComplete.attachHandlers();
+
     Boxcars.PageSwitchers.attachHandlers();
     Boxcars.PageSwitchers.onShowRoutes(Boxcars.Routes.clear);
     Boxcars.PageSwitchers.onShowDestinatations(Boxcars.Destinations.clear);
