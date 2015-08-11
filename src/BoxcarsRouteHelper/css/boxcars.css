@@ -1,15 +1,17 @@
 ﻿.page-header { margin-top: 0; }
 
 .switch-view {
-    border-top-style: solid;
-    border-top-width: 1px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 15px;
-    padding-top: 10px;
+    border-top: solid 1px #999999;
+    margin: 15px 10px 10px 10px;
+    padding-top: 15px;
+}
+
+.destination-row {
+    margin-bottom: 5px;
 }
 
 footer p {
+    margin-top: 8px;
     text-align: center;
 }
 

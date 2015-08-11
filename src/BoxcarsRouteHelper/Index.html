@@ -14,116 +14,152 @@
     <link href="./css/boxcars.css" rel="stylesheet">
 </head>
 <body class="bs-docs-home">
-    <!-- Routes -->
-    <div id="routes-container" class="container" tabindex="-1">
-        <div>
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <h2 class="text-primary" style="text-align: center">Routes</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 full-width-input">
-                    <div class="form-group">
-                        <h5>Origin</h5>
-                        <input class="form-control typeahead tt-query city-complete" autocomplete="off" spellcheck="false" id="origin-input" type="text" placeholder="Enter city...">
-                    </div>
-                    <div class="form-group">
-                        <h5>Destination</h5>
-                        <input class="form-control typeahead tt-query city-complete" autocomplete="off" spellcheck="false" id="destination-input" type="text" placeholder="Enter city...">
-                    </div>
-                    <div class="form-group">
-                        <h5>Route Value</h5>
-                        <output class="text-primary" for="origin-input destination-input" id="destination-output">$<span id="route-value">0</span></output>
-                    </div>
-                </div>
-            </div>
-            <div class="row switch-view">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <a href="javascript:void(0)" id="btn-destinations" class="btn btn-success btn-block">Switch</a>
-                </div>
+<!-- Routes -->
+<div id="routes-container" class="container" tabindex="-1">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="text-primary" style="text-align: center">Routes</h2>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Origin</h5>
+        </div>
+    </div>
+    <div class="row full-width-input">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <input class="form-control typeahead tt-query city-complete" autocomplete="off" spellcheck="false" id="origin-input" type="text" placeholder="Enter city...">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Destination</h5>
+        </div>
+    </div>
+    <div class="row full-width-input">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <input class="form-control typeahead tt-query city-complete" autocomplete="off" spellcheck="false" id="destination-input" type="text" placeholder="Enter city...">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Route Value</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div id="route-output" class="text-primary">&nbsp;</div>
+        </div>
+    </div>
+    <div class="row switch-view">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <a href="javascript:void(0)" id="btn-destinations" class="btn btn-success btn-block">Switch</a>
+        </div>
+    </div>
+</div>
 
-    <!-- Destinations -->
-    <div id="destinations-container" class="container" tabindex="-1" style="display: none">
-        <div class="page-header">
-            <div class="row">
-                <div class="col-lg-12 col-md-7 col-sm-6">
-                    <h2 class="text-success" style="text-align: center">Destinations</h2>
-                </div>
-            </div>
-        </div>
-        <!-- Region -->
+<!-- Destinations -->
+<div id="destinations-container" class="container" tabindex="-1" style="display: none">
+    <div class="page-header">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h5>Region</h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8">
-                <div class="btn-group btn-group-justified">
-                    <a class="btn btn-default grouped-button" data-group="region">Odd</a>
-                    <a class="btn btn-default grouped-button" data-group="region">Even</a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                <div class="form-group">
-                    <input class="form-control" id="destinationregion-input" type="number" min="2" max="12" pattern="\d*">
-                </div>
-            </div>
-        </div>
-        <!-- City -->
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h5>City</h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8">
-                <div class="btn-group btn-group-justified">
-                    <a class="btn btn-default grouped-button" data-group="city">Odd</a>
-                    <a class="btn btn-default grouped-button" data-group="city">Even</a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                <div class="form-group">
-                    <input class="form-control" id="destinationcity-input" type="number" min="2" max="12" pattern="\d*">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8">
-                <h5>Destination</h5>
-                <output class="text-primary" for="origin-input destination-input" id="destination-output">Example City</output>
-            </div>
-        </div>
-
-        <div class="row switch-view">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <a href="javascript:void(0)" id="btn-routes" class="btn btn-primary btn-block">Switch</a>
+            <div class="col-lg-12 col-md-7 col-sm-6">
+                <h2 class="text-success" style="text-align: center">Destinations</h2>
             </div>
         </div>
     </div>
-
-    <!-- Footer
-    ================================================== -->
-    <footer role="contentinfo">
-        <div class="container">
-            <p>All content pulled from the <a href="http://riograndegames.com/Game/1270-BOXCARS">Boxcars board game</a> published by Rio Grande Games.</p>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Origin</h5>
         </div>
-    </footer>
+    </div>
+    <div class="row full-width-input">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <input class="form-control typeahead tt-query city-complete" autocomplete="off" spellcheck="false" id="input-destinations-origin" type="text" placeholder="Enter city...">
+        </div>
+    </div>
+    <!-- Region -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Region</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8">
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-default grouped-button" data-group="region" data-oddeven="odd">Odd</a>
+                <a class="btn btn-default grouped-button" data-group="region" data-oddeven="even">Even</a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+            <input class="form-control" id="input-destinationregion" type="number" min="2" max="12" pattern="\d*">
+        </div>
+    </div>
+    <!-- City -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>City</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 col-md-5 col-sm-4 col-xs-8">
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-default grouped-button" data-group="city" data-oddeven="odd">Odd</a>
+                <a class="btn btn-default grouped-button" data-group="city" data-oddeven="even">Even</a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+            <input class="form-control" id="input-destinationcity" type="number" min="2" max="12" pattern="\d*">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Destination</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div id="destination-output" class="text-primary">&nbsp;</div>
+        </div>
+    </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-    <script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
-    <script src="./js/typeahead.js"></script>
-    <script src="./js/boxcars.js"></script>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Route Value</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div id="output-destination-routeValue" class="text-primary">$4,000</div>
+        </div>
+    </div>
+
+
+    <div class="row switch-view">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <a href="javascript:void(0)" id="btn-routes" class="btn btn-primary btn-block">Switch</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer
+================================================== -->
+<footer role="contentinfo">
+    <div class="container">
+        <p>
+            All content pulled from the <a href="http://riograndegames.com/Game/1270-BOXCARS">Boxcars board game</a> published by Rio Grande Games.
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
+<script src="./js/typeahead.js"></script>
+<script src="./js/boxcars.js"></script>
 </body>
 </html>
