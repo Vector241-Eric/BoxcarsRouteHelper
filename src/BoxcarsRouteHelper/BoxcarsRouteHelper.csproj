@@ -65,6 +65,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\Cities.js" />
+    <Content Include="js\Destinations.js" />
+    <Content Include="js\Regions.js" />
     <Content Include="Strap.html" />
     <Content Include="css\boxcars.css" />
     <Content Include="Bootswatch.html" />

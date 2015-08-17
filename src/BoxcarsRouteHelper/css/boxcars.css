@@ -15,6 +15,10 @@ footer p {
     text-align: center;
 }
 
+.text-strong {
+    font-weight: 700;
+}
+
 /* Typeahead */
 
 .full-width-input .twitter-typeahead { width: 100%; }

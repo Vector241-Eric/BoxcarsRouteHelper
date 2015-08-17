@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxcarsRouteHelper", "BoxcarsRouteHelper\BoxcarsRouteHelper.csproj", "{8BF534BC-F09F-40B8-A73D-F154DFC6999E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavascriptDataGenerator", "JavascriptDataGenerator\JavascriptDataGenerator.csproj", "{AC3774A5-981F-4D97-AEF9-B073DC12E141}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8BF534BC-F09F-40B8-A73D-F154DFC6999E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BF534BC-F09F-40B8-A73D-F154DFC6999E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BF534BC-F09F-40B8-A73D-F154DFC6999E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC3774A5-981F-4D97-AEF9-B073DC12E141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3774A5-981F-4D97-AEF9-B073DC12E141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3774A5-981F-4D97-AEF9-B073DC12E141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3774A5-981F-4D97-AEF9-B073DC12E141}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
