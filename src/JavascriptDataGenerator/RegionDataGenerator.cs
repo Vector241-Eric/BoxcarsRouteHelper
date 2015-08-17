@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace JavascriptDataGenerator
 {
-    [TestFixture]
+    [TestFixture, Ignore]
     public class RegionDataGenerator
     {
         public class RegionRow
