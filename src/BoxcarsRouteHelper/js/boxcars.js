@@ -140,8 +140,22 @@ var Boxcars = Boxcars || {};
                     allValid: allValid
                 };
             };
-            var attachHandlers = function() {
+
+            var clearOnFocus = function (id) {
+                $("#" + id).on("focus", function () {
+                    var el = $(this);
+                    el.val("");
+                });
+            };
+
+            var attachHandlers = function () {
                 $(".grouped-button").click(clickHandler);
+                $("#" + originId).on("focus", function() {
+                    var el = $(this);
+                    el.typeahead("val", "");
+                });
+                clearOnFocus("input-destinations-region");
+                clearOnFocus("input-destinations-city");
             };
 
             var onChange = function(handler) {
@@ -155,8 +169,8 @@ var Boxcars = Boxcars || {};
             };
         })();
 
-        var regionRollId = "input-destinationregion";
-        var cityRollId = "input-destinationcity";
+        var regionRollId = "input-destinations-region";
+        var cityRollId = "input-destinations-city";
 
         var setDestinationValue = function(val) {
             document.getElementById("destination-output").innerHTML = val;
