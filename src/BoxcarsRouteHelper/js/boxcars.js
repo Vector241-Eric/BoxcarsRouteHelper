@@ -197,10 +197,36 @@ var Boxcars = Boxcars || {};
 
         };
 
+        var getRegionForCity = function(cityText) {
+            for (var key in Boxcars.Data.destinations) {
+                if (Boxcars.Data.destinations[key].name === cityText) {
+                    var region = key.split(':')[0];
+                    console.log(region);
+                    return region;
+                }
+            }
+        };
+
+        var setOriginRegionDisplay = function(text) {
+            document.getElementById("origin-region").innerHTML = text;
+        }
+
+        var onOriginChanged = function() {
+            var origin = Boxcars.Util.getInputValue(originId);
+            if (origin === "") {
+                setOriginRegionDisplay('');
+                return 0;
+            }
+            var region = getRegionForCity(origin);
+            setOriginRegionDisplay('(' + region + ')');
+            onValueChanged();
+        };
+
         var onValueChanged = function() {
             var buttons = buttonGroups.getSelected();
             var regionRoll = Boxcars.Util.getInputValue(regionRollId);
             var cityRoll = Boxcars.Util.getInputValue(cityRollId);
+
 
             var hasAllDestinationInput = buttons.allValid
                 && regionRoll !== ""
@@ -225,7 +251,8 @@ var Boxcars = Boxcars || {};
             buttonGroups.onChange(onValueChanged);
             $("#" + regionRollId).on("change", onValueChanged);
             $("#" + cityRollId).on("change", onValueChanged);
-            Boxcars.Util.handleTypeaheadChange(originId, onValueChanged);
+            Boxcars.Util.handleTypeaheadChange(originId, onOriginChanged);
+
         };
 
         return {
