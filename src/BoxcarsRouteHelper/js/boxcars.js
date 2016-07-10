@@ -188,9 +188,14 @@ var Boxcars = Boxcars || {};
             $("#" + originId).typeahead("val", "");
         };
 
-        var getDestination = function (regionOddEven, regionNumber, cityOddEven, cityNumber) {
+        var getRegion = function(regionOddEven, regionNumber) {
             var regionKey = regionOddEven + ":" + regionNumber;
             var region = Boxcars.Data.regions[regionKey];
+            return region;
+        }
+
+        var getDestination = function (regionOddEven, regionNumber, cityOddEven, cityNumber) {
+            var region = getRegion(regionOddEven, regionNumber);
             var destinationKey = region + ":" + cityOddEven + ":" + cityNumber;
             var destination = Boxcars.Data.destinations[destinationKey];
             return destination;
@@ -227,6 +232,11 @@ var Boxcars = Boxcars || {};
             var regionRoll = Boxcars.Util.getInputValue(regionRollId);
             var cityRoll = Boxcars.Util.getInputValue(cityRollId);
 
+            if (buttons.region && regionRoll !== "") {
+                document.getElementById('destination-region').innerHTML = '(' + getRegion(buttons.region, regionRoll) + ')';
+            } else {
+                document.getElementById('destination-region').innerHTML = '';
+            }
 
             var hasAllDestinationInput = buttons.allValid
                 && regionRoll !== ""
