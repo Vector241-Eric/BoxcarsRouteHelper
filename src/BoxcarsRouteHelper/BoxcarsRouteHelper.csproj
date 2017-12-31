@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,6 +92,7 @@
     <Content Include="css\boxcars.css" />
     <Content Include="Bootswatch.html" />
     <Content Include="Index.html" />
+    <Content Include="UnitedStates.html" />
     <Content Include="js\boxcars.js" />
     <Content Include="js\typeahead.js" />
     <Content Include="Web.config" />
