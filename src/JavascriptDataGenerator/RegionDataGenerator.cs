@@ -33,10 +33,10 @@ namespace JavascriptDataGenerator
             var inputFile = GeneratorFileHelper.GetInputExcelFile();
 
             var excel = new ExcelQueryFactory(inputFile);
-            var rows = from c in excel.Worksheet<RegionRow>("Regions")
+            var rows = from c in excel.Worksheet<RegionRow>("UK-Regions")
                 select c;
 
-            var outputFile = GeneratorFileHelper.InitializeOutputJsFile("Regions.js", "regions");
+            var outputFile = GeneratorFileHelper.InitializeOutputJsFile("Regions_UK.js", "regions");
             File.AppendAllLines(outputFile, rows.Select(x => x.GetElementAdd("Boxcars.Data.regions")).ToArray());
         }
     }

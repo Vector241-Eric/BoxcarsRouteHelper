@@ -15,9 +15,9 @@ namespace JavascriptDataGenerator
             var inputFile = GeneratorFileHelper.GetInputExcelFile();
 
             var excel = new ExcelQueryFactory(inputFile);
-            var columns = excel.GetColumnNames("Payouts").Skip(1);
+            var columns = excel.GetColumnNames("UK-Payouts").Skip(1);
 
-            var outputFile = GeneratorFileHelper.InitializeOutputJsFile("Cities.js");
+            var outputFile = GeneratorFileHelper.InitializeOutputJsFile("Cities_UK.js");
             var builder = new StringBuilder("Boxcars.Data.cities = [\n\t");
             var counter = 0;
             foreach (var column in columns)

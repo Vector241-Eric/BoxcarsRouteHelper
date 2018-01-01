@@ -5,7 +5,7 @@
 var Boxcars = Boxcars || {};
 Boxcars.Data = Boxcars.Data || {};
 
-Boxcars.Data.destinations = {}
+Boxcars.Data.destinations = {};
 Boxcars.Data.destinations["Northeast:ODD:2"] = {name: "New York", index: 39};
 Boxcars.Data.destinations["Northeast:ODD:3"] = {name: "New York", index: 39};
 Boxcars.Data.destinations["Northeast:ODD:4"] = {name: "New York", index: 39};

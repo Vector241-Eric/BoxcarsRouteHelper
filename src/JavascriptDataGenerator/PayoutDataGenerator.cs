@@ -16,14 +16,14 @@ namespace JavascriptDataGenerator
             var inputFile = GeneratorFileHelper.GetInputExcelFile();
 
             var excel = new ExcelQueryFactory(inputFile);
-            var rows = (from c in excel.WorksheetNoHeader("Payouts")
+            var rows = (from c in excel.WorksheetNoHeader("UK-Payouts")
                 select c).ToArray();
             
             //Skip the first row (header)
             //Skip the last row (totals)
             rows = rows.Take(rows.Length - 1).Skip(1).ToArray();
 
-            var outputFile = GeneratorFileHelper.InitializeOutputJsFile("Payouts.js");
+            var outputFile = GeneratorFileHelper.InitializeOutputJsFile("Payouts_UK.js");
             var builder = new StringBuilder();
             builder.AppendLine();
             builder.AppendLine("Boxcars.Data.payouts = [");

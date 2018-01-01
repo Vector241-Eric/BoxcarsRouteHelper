@@ -7,7 +7,7 @@ namespace JavascriptDataGenerator
         public static string InitializeOutputJsFile(string fileName, string objectName)
         {
             var filePath = InitializeOutputJsFile(fileName);
-            File.AppendAllLines(filePath, new[] {"Boxcars.Data." + objectName + " = {}"});
+            File.AppendAllLines(filePath, new[] {"Boxcars.Data." + objectName + " = {};"});
 
             return filePath;
         }
