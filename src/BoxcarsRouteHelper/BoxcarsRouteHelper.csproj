@@ -69,6 +69,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="js\Cities_UK.js" />
+    <Content Include="js\Destinations_UK.js" />
+    <Content Include="js\Payouts_UK.js" />
+    <Content Include="js\Regions_UK.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="packages.config" />
@@ -92,6 +96,7 @@
     <Content Include="css\boxcars.css" />
     <Content Include="Bootswatch.html" />
     <Content Include="Index.html" />
+    <Content Include="UnitedKingdom.html" />
     <Content Include="UnitedStates.html" />
     <Content Include="js\boxcars.js" />
     <Content Include="js\typeahead.js" />
