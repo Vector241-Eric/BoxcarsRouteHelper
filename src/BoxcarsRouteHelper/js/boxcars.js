@@ -232,7 +232,7 @@ var Boxcars = Boxcars || {};
             var regionRoll = Boxcars.Util.getInputValue(regionRollId);
             var cityRoll = Boxcars.Util.getInputValue(cityRollId);
 
-            if (buttons.region && regionRoll !== "") {------
+            if (buttons.region && regionRoll !== "") {
                 document.getElementById('destination-region').innerHTML = '(' + getRegion(buttons.region, regionRoll) + ')';
             } else {
                 document.getElementById('destination-region').innerHTML = '';
