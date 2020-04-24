@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using NUnit.Framework;
 
 namespace JavascriptDataGenerator
 {
-    [TestFixture, Ignore]
+    [TestFixture]
     public class PayoutDataGenerator
     {
         [Test]
@@ -16,11 +17,23 @@ namespace JavascriptDataGenerator
 
             var excel = new ExcelQueryFactory(inputFile);
             var rows = (from c in excel.WorksheetNoHeader("UK-Payouts")
-                select c).ToArray();
-            
+                        select c).ToArray();
+
+            var counter = 1;
+            foreach (RowNoHeader r in rows)
+            {
+                Console.WriteLine("Row [" + counter + "]: " + r[0]);
+                counter = counter + 1;
+            }
+
             //Skip the first row (header)
             //Skip the last row (totals)
-            rows = rows.Take(rows.Length - 1).Skip(1).ToArray();
+
+            Console.WriteLine("Rows length: " + rows.Length);
+
+            rows = rows.Take(rows.Length).Skip(1).ToArray();
+
+            Console.WriteLine("Input row length: " + rows.Length);
 
             var outputFile = GeneratorFileHelper.InitializeOutputJsFile("Payouts_UK.js");
             var builder = new StringBuilder();
@@ -32,13 +45,16 @@ namespace JavascriptDataGenerator
                 var isLastRow = inputRowIndex == rows.Length - 1;
                 builder.AppendFormat("//{0}\n\t[", inputRowIndex);
 
+                var row = rows[inputRowIndex];
+                Console.WriteLine("Processing row: " + row[0]);
+
                 //Skip the first cell (row header)
-                var cells = rows[inputRowIndex].Skip(1).ToArray();
+                var cells = row.Skip(1).ToArray();
                 for (var inputColumnIndex = 0; inputColumnIndex < cells.Length; inputColumnIndex++)
                 {
                     var isLastCell = inputColumnIndex == cells.Length - 1;
                     var stringValue = cells[inputColumnIndex].Value.ToString();
-                    var decimalValue = decimal.Parse(stringValue) * 1000;
+                    var decimalValue = decimal.Parse(stringValue)*1000;
                     builder.AppendFormat("\"${0:n0}\"", decimalValue);
                     var separator = string.Empty;
                     var makeNewLine = (inputColumnIndex%10) == 9 && (!isLastCell);
